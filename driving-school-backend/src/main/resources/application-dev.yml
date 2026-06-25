@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    # allowPublicKeyRetrieval=true 允许 MySQL 8+ 使用 caching_sha2_password 认证插件时获取公钥
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:driving_school}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${DB_USER:root}
+    # 开发环境默认密码（生产环境必须通过环境变量 DB_PASS 设置）
+    password: ${DB_PASS:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASS:}
+      database: 0
+
+jwt:
+  # 开发环境默认密钥（生产环境必须通过环境变量设置，长度不少于32字符）
+  secret: ${JWT_SECRET:DevSecretKeyMustBeAtLeast256BitsLongForHS256!}
+  access-token-expiration: 7200000
+  refresh-token-expiration: 604800000
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

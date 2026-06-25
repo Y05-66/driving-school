@@ -1,0 +1,219 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/learn/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/booking/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/message/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/student/progress",
+      "style": {
+        "navigationBarTitleText": "学习进度",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/lesson/list",
+      "style": {
+        "navigationBarTitleText": "我的课时",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/lesson/book",
+      "style": {
+        "navigationBarTitleText": "预约课时",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/exam/list",
+      "style": {
+        "navigationBarTitleText": "考试安排",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/practice/index",
+      "style": {
+        "navigationBarTitleText": "在线刷题",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/practice/wrong",
+      "style": {
+        "navigationBarTitleText": "错题本",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/registration/index",
+      "style": {
+        "navigationBarTitleText": "在线报名",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/coach/schedule",
+      "style": {
+        "navigationBarTitleText": "排班管理",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/video/index",
+      "style": {
+        "navigationBarTitleText": "视频教学",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/video/play",
+      "style": {
+        "navigationBarTitleText": "播放视频",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/finance/payment",
+      "style": {
+        "navigationBarTitleText": "我的缴费",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/survey/index",
+      "style": {
+        "navigationBarTitleText": "满意度调查",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/reminder/index",
+      "style": {
+        "navigationBarTitleText": "我的提醒",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/coach/students",
+      "style": {
+        "navigationBarTitleText": "我的学员",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/coach/lessons",
+      "style": {
+        "navigationBarTitleText": "我的课程",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/notification/list",
+      "style": {
+        "navigationBarTitleText": "通知公告",
+        "navigationBarBackgroundColor": "#4A7DFF",
+        "navigationBarTextStyle": "white"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "驾校管理系统",
+    "navigationBarBackgroundColor": "#4A7DFF",
+    "backgroundColor": "#f5f7fa"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#4A7DFF",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tab-home.png",
+        "selectedIconPath": "static/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/learn/index",
+        "text": "学车",
+        "iconPath": "static/tab-lesson.png",
+        "selectedIconPath": "static/tab-lesson-active.png"
+      },
+      {
+        "pagePath": "pages/booking/index",
+        "text": "预约",
+        "iconPath": "static/tab-lesson.png",
+        "selectedIconPath": "static/tab-lesson-active.png"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "text": "消息",
+        "iconPath": "static/tab-notify.png",
+        "selectedIconPath": "static/tab-notify-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "static/tab-user.png",
+        "selectedIconPath": "static/tab-user-active.png"
+      }
+    ]
+  }
+}

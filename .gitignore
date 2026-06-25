@@ -1,0 +1,42 @@
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Backend
+driving-school-backend/target/
+driving-school-backend/.idea/
+driving-school-backend/avatars/
+driving-school-backend/uploads/
+
+# Frontend
+driving-school-frontend/node_modules/
+driving-school-frontend/dist/
+
+# Miniapp
+driving-school-miniapp/node_modules/
+driving-school-miniapp/dist/
+driving-school-miniapp/unpackage/
+
+# Environment files (contain secrets)
+.env
+.env.local
+.env.*.local
+
+# Project documents (not code)
+驾校管理系统毕业答辩.pptx
+ER图预览.html
+generate_ppt.py
+毕业论文.md
+毕业论文_基金分析系统.md

@@ -1,0 +1,27 @@
+# Compiled class files
+target/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Log files
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files (contain secrets)
+# application-dev.yml should NOT be committed in real projects
+# application-prod.yml should NOT be committed in real projects
+
+# Upload files
+uploads/
+avatars/
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
