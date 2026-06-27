@@ -278,6 +278,7 @@
 
       <view style="height: 120rpx;"></view>
     </scroll-view>
+    <FloatingAi />
   </view>
 </template>
 
@@ -286,6 +287,7 @@ import { ref, computed, onMounted } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '../../store/user'
 import { get } from '../../utils/request'
+import FloatingAi from '../../components/FloatingAi.vue'
 
 // ========== 状态管理 ==========
 

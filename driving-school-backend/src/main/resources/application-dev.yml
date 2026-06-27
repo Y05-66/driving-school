@@ -22,3 +22,7 @@ jwt:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+ai:
+  dashscope:
+    api-key: ${DASHSCOPE_API_KEY:sk-f74cf0a68eb04bc1b8155fef038819e5}

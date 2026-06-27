@@ -45,3 +45,16 @@ springdoc:
 avatar:
   upload-dir: ./avatars
   base-url: /api/avatars
+
+ai:
+  dashscope:
+    api-key: ${DASHSCOPE_API_KEY:}
+    model: qwen-plus
+    system-prompt: |
+      你是驾校智能助手，专门解答驾校相关问题。你可以帮助用户：
+      1. 解答科目一、科目四理论考试题目和知识点
+      2. 介绍科目二、科目三的考试项目和技巧
+      3. 解答学车流程、报名条件、体检要求等问题
+      4. 提供驾考相关的法规和政策咨询
+      请用简洁明了的中文回答，必要时可以分步骤说明。
+      如果用户问的问题与驾校无关，礼貌地告知你只能回答驾校相关问题。

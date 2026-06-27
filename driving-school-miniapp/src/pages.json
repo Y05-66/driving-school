@@ -170,6 +170,13 @@
         "navigationBarBackgroundColor": "#4A7DFF",
         "navigationBarTextStyle": "white"
       }
+    },
+    {
+      "path": "pages/ai/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
+      }
     }
   ],
   "globalStyle": {

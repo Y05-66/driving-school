@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Driving school management system backend (`com.drivingschool:driving-school-backend`). Single-module Spring Boot 3.2.5 monolith serving REST APIs for: auth/users, students, coaches, vehicles, courses, lessons, exams, finance, statistics, notifications, channels, check-in, contracts, practice (question bank), registration, reminders, surveys, and videos. Context path: `/api`, default port `8080`.
+Driving school management system backend (`com.drivingschool:driving-school-backend`). Single-module Spring Boot 3.2.5 monolith serving REST APIs for: auth/users, students, coaches, vehicles, courses, lessons, exams, finance, statistics, notifications, channels, check-in, contracts, practice (question bank), registration, reminders, surveys, videos, and AI chat (DashScope/阿里云百炼). Context path: `/api`, default port `8080`.
 
 ## Build & Run Commands
 
@@ -20,7 +20,7 @@ No tests exist yet. `pom.xml` includes `spring-boot-starter-test` and `spring-se
 ## Prerequisites
 
 - **JDK 21**, **Maven 3.8+**
-- **MySQL** — initialize with `mysql -u root -p < src/main/resources/schema.sql` (creates `driving_school` db, 28 tables, seed data with 4 default users)
+- **MySQL** — initialize with `mysql -u root -p < src/main/resources/schema.sql` (creates `driving_school` db, 30 tables, seed data with 4 default users)
 - **Redis** — required for token blacklist; app warns but runs without it
 - Dev config in `src/main/resources/application-dev.yml` (MySQL/Redis creds, JWT secret)
 
@@ -51,6 +51,7 @@ HTTP → CorsFilter (global bean) → RateLimitFilter → JwtAuthenticationFilte
 | `reminder` | `/reminders` | `Reminder` |
 | `survey` | `/surveys` | `SatisfactionSurvey` |
 | `video` | `/videos` | (teaching video content) |
+| `ai` | `/ai` | `ChatHistory` (DashScope/阿里云百炼 AI chat, SSE streaming + sync) |
 
 Cross-cutting in `common/`: `config/` (Security, JWT filter, RateLimit filter, CORS, Jackson, AOP, async, cache, scheduled tasks), `constant/Constants`, `enums/`, `exception/` (BusinessException + GlobalExceptionHandler), `result/` (R\<T\>, PageResult), `utils/` (JwtUtils, RedisUtils, ExcelUtils).
 
@@ -71,6 +72,12 @@ Cross-cutting in `common/`: `config/` (Security, JWT filter, RateLimit filter, C
 
 `MAX_STUDENTS_PER_COACH=30`, `MAX_LESSONS_PER_DAY=4`, `CANCEL_HOURS_BEFORE=2`, `MAX_RETAKE_COUNT=5`, `RETAKE_INTERVAL_DAYS=10`, pass scores: subject 1/3/4 = 90, subject 2 = 80.
 
+## Notable Dependencies
+
+- **DashScope SDK** (`com.alibaba:dashscope-sdk-java:2.20.0`) — Alibaba Cloud's AI platform for the `/ai` chat feature. Supports SSE streaming and sync responses.
+- **Hutool** (`cn.hutool:hutool-all:5.8.27`) — utility library
+- **Apache POI** (`poi-ooxml:5.2.5`) — Excel export
+
 ## API Docs
 
 Swagger UI: `http://localhost:8080/api/swagger-ui.html`
@@ -78,4 +85,4 @@ OpenAPI JSON: `http://localhost:8080/api/v3/api-docs`
 
 ## Database Schema
 
-Full DDL in `src/main/resources/schema.sql`. 28 tables, all using BIGINT snowflake PKs, soft delete (`deleted` column), `create_time`/`update_time` auto-filled. No migration tool (Flyway/Liquibase) — schema is managed via this single file. ER diagram: open `ER图预览.html` (project root) in a browser.
+Full DDL in `src/main/resources/schema.sql`. 30 tables, all using BIGINT snowflake PKs, soft delete (`deleted` column), `create_time`/`update_time` auto-filled. No migration tool (Flyway/Liquibase) — schema is managed via this single file. ER diagram: open `ER图预览.html` (project root) in a browser.

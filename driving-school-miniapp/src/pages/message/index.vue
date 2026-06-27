@@ -44,6 +44,7 @@
 
       <view style="height: 120rpx;"></view>
     </scroll-view>
+    <FloatingAi />
   </view>
 </template>
 
@@ -53,6 +54,7 @@ import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '../../store/user'
 import { useNotificationStore } from '../../store/notification'
 import { get, put } from '../../utils/request'
+import FloatingAi from '../../components/FloatingAi.vue'
 
 const userStore = useUserStore()
 const notifyStore = useNotificationStore()

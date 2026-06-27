@@ -525,6 +525,22 @@ CREATE TABLE IF NOT EXISTS registration (
     INDEX idx_create_time (create_time)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- ====== AI 聊天记录表 ======
+CREATE TABLE IF NOT EXISTS `chat_history` (
+  `id` BIGINT NOT NULL,
+  `user_id` BIGINT NOT NULL COMMENT '用户ID',
+  `conversation_id` VARCHAR(64) NOT NULL COMMENT '会话ID',
+  `role` VARCHAR(20) NOT NULL COMMENT 'user/assistant',
+  `content` TEXT NOT NULL COMMENT '消息内容',
+  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` TINYINT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  INDEX `idx_user_id` (`user_id`),
+  INDEX `idx_conversation_id` (`conversation_id`),
+  INDEX `idx_user_conversation_time` (`user_id`, `conversation_id`, `create_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='AI聊天记录';
+
 -- 初始账号 (密码: admin123/staff123/coach123/student123)
 INSERT INTO sys_user (id, username, password, real_name, role, status) VALUES
 (1, 'admin', '$2a$10$pkKgKRTitb/iWaF4eENIw.ApiITVvuRbWBZOPM1jkxQXzui1ROm46', 'Admin', 'ADMIN', 1),

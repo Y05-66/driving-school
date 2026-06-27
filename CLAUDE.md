@@ -17,10 +17,9 @@ Monorepo for a driving school management system (驾校管理系统). Three inde
 ```bash
 start.bat    # Auto-detects local IP, updates IPs in config files, builds miniapp, starts backend + frontend
 stop.bat     # Kills processes on ports 8080 and 3000
-update-ip.bat # Updates hardcoded IP addresses in miniapp config.js + frontend vite.config.js, rebuilds miniapp
 ```
 
-`start.bat` detects the local LAN IP (prefers 192.168.x.x), patches it into `driving-school-miniapp/src/utils/config.js` and `driving-school-frontend/vite.config.js`, builds the miniapp, then launches backend and frontend in hidden windows. Logs go to `logs/backend.log` and `logs/frontend.log`.
+`start.bat` detects the local LAN IP (prefers 192.168.x.x), patches it into `driving-school-miniapp/src/utils/config.js` and `driving-school-frontend/vite.config.js`, builds the miniapp, then launches backend and frontend in hidden windows. Logs go to `logs/backend.log` and `logs/frontend.log`. Windows auto-close on success.
 
 ### Backend
 
@@ -64,7 +63,7 @@ WeChat Miniapp ──────────────────→  CorsFi
 
 Filter chain details: `RateLimitFilter` (login/registration rate limit, 10 req/min per IP) → `JwtAuthenticationFilter` (parses Bearer token) → Spring Security (role-based authorization). `CorsFilter` runs as a separate Servlet filter outside the Security chain. Registration endpoints (`POST /registrations`, `GET /registrations/status`) are public.
 
-Database ER diagram: open `ER图预览.html` in a browser for a visual schema reference of all 28 tables and their relationships. Also useful: Swagger UI at `http://localhost:8080/api/swagger-ui.html` for interactive API exploration.
+Database ER diagram: open `ER图预览.html` in a browser for a visual schema reference of all 30 tables and their relationships. Also useful: Swagger UI at `http://localhost:8080/api/swagger-ui.html` for interactive API exploration.
 
 **Frontend build:** Vite splits chunks: `element-plus`, `echarts`, and `vendor` (vue/vue-router/pinia/axios) are separate bundles for faster loading.
 
@@ -93,12 +92,13 @@ Domains and their API prefixes:
 | `reminder` | `/reminders` | `Reminder` |
 | `survey` | `/surveys` | `SatisfactionSurvey` |
 | `video` | `/videos` | (teaching video content) |
+| `ai` | `/ai` | `ChatHistory` (DashScope/阿里云百炼 AI chat, SSE streaming + sync) |
 
 Cross-cutting in `common/`: `config/` (Security, JWT filter, RateLimit filter, CORS, Jackson, AOP, async, cache, scheduled tasks), `constant/Constants`, `enums/`, `exception/` (BusinessException + GlobalExceptionHandler), `result/` (R\<T\>, PageResult), `utils/` (JwtUtils, RedisUtils, ExcelUtils).
 
 **Business constants** (`common/constant/Constants.java`): `MAX_STUDENTS_PER_COACH=30`, `MAX_LESSONS_PER_DAY=4`, `CANCEL_HOURS_BEFORE=2`, `MAX_RETAKE_COUNT=5`, `RETAKE_INTERVAL_DAYS=10`, pass scores: subject 1/3/4 = 90, subject 2 = 80.
 
-**Database:** MySQL `driving_school`, 28 tables in `schema.sql`. All tables use BIGINT snowflake PKs, soft delete (`deleted` column), `createTime`/`updateTime` auto-filled. Default accounts: `admin`/`staff`/`coach`/`student` (BCrypt hashed passwords in seed data). MyBatis-Plus configured with `ASSIGN_ID` id-type, `deleted` as logic-delete field, underscore-to-camel-case mapping enabled. Schema file: `driving-school-backend/src/main/resources/schema.sql`. No migration tool (Flyway/Liquibase) — schema managed via this single file.
+**Database:** MySQL `driving_school`, 30 tables in `schema.sql`. All tables use BIGINT snowflake PKs, soft delete (`deleted` column), `createTime`/`updateTime` auto-filled. Default accounts: `admin`/`staff`/`coach`/`student` (BCrypt hashed passwords in seed data). MyBatis-Plus configured with `ASSIGN_ID` id-type, `deleted` as logic-delete field, underscore-to-camel-case mapping enabled. Schema file: `driving-school-backend/src/main/resources/schema.sql`. No migration tool (Flyway/Liquibase) — schema managed via this single file.
 
 **IDs in DTOs/params:** Use `@DateTimeFormat(pattern = "yyyy-MM-dd")` for date params. Jackson `Long` → `String` conversion configured in `JacksonConfig`.
 
@@ -160,7 +160,7 @@ uni-app (Vue 3 + Vite) targeting WeChat, Alipay, and Baidu mini-program platform
 ## Dev Environment Notes
 
 - Frontend vite proxy targets `http://localhost:8080` — update `vite.config.js` if backend runs elsewhere.
-- Miniapp `BASE_URL` in `src/utils/config.js` must be updated manually when backend IP changes. Use `update-ip.bat` or `start.bat` to auto-detect and patch IPs in both miniapp config and frontend `vite.config.js`.
+- Miniapp `BASE_URL` in `src/utils/config.js` is auto-updated by `start.bat` on each launch.
 - Backend dev config in `src/main/resources/application-dev.yml`. Environment variable overrides: `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS`, `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASS`, `JWT_SECRET`. Defaults: MySQL on localhost:3306, Redis on localhost:6379, password `123456`.
 - Redis is required for token blacklist; app warns but runs without it.
 - Max upload size: 2MB (configured in `application.yml`).

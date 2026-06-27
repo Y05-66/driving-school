@@ -230,6 +230,9 @@
       </el-main>
     </el-container>
   </el-container>
+
+  <!-- AI 助手浮动面板 -->
+  <AiChatWidget />
 </template>
 
 <script setup>
@@ -239,6 +242,7 @@ import { useUserStore } from '../store/user'
 import { useNotificationStore } from '../store/notification'
 import { ElMessageBox } from 'element-plus'
 import ThemePicker from './ThemePicker.vue'
+import AiChatWidget from './AiChatWidget.vue'
 
 /** @description 路由实例，用于编程式导航 */
 const router = useRouter()

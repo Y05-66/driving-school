@@ -82,6 +82,11 @@
       <view class="menu-group">
         <text class="group-title">更多服务</text>
         <view class="menu-card">
+          <view class="menu-item" @click="goTo('/pages/ai/index')">
+            <view class="menu-icon-wrap" style="background: #E8F5E9"><text class="menu-emoji">🤖</text></view>
+            <text class="menu-text">AI 助手</text>
+            <text class="menu-arrow">›</text>
+          </view>
           <view class="menu-item" @click="goTo('/pages/survey/index')" v-if="userInfo.role === 'STUDENT'">
             <view class="menu-icon-wrap" style="background: #F3E5F5"><text class="menu-emoji">⭐</text></view>
             <text class="menu-text">满意度调查</text>
@@ -131,6 +136,7 @@
         </view>
       </view>
     </view>
+    <FloatingAi />
   </view>
 </template>
 
@@ -140,6 +146,7 @@ import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '../../store/user'
 import { get } from '../../utils/request'
 import { changePassword, uploadAvatar } from '../../utils/api'
+import FloatingAi from '../../components/FloatingAi.vue'
 
 const userStore = useUserStore()
 

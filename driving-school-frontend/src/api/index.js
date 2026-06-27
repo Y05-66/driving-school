@@ -774,3 +774,31 @@ export const checkOut = (lessonId, data) => request.put(`/check-in/${lessonId}/c
  * @returns {Promise} 签到记录列表
  */
 export const getCheckInRecords = (lessonId) => request.get(`/check-in/${lessonId}`)
+
+// ====== AI 助手接口 ======
+
+/**
+ * @description 获取用户的会话列表
+ * @returns {Promise} 会话列表
+ */
+export const getAiConversations = () => request.get('/ai/conversations')
+
+/**
+ * @description 获取可用模型列表
+ * @returns {Promise} 模型列表 [{id, name, description}]
+ */
+export const getAiModels = () => request.get('/ai/models')
+
+/**
+ * @description 获取指定会话的聊天历史
+ * @param {string} conversationId - 会话ID
+ * @returns {Promise} 聊天记录列表
+ */
+export const getAiConversationHistory = (conversationId) => request.get(`/ai/conversations/${conversationId}`)
+
+/**
+ * @description 删除会话
+ * @param {string} conversationId - 会话ID
+ * @returns {Promise}
+ */
+export const deleteAiConversation = (conversationId) => request.delete(`/ai/conversations/${conversationId}`)

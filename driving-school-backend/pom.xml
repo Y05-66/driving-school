@@ -108,6 +108,13 @@
             <version>5.2.5</version>
         </dependency>
 
+        <!-- DashScope SDK (阿里云百练平台) -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dashscope-sdk-java</artifactId>
+            <version>2.20.0</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,4 +1,6 @@
 @echo off
+chcp 65001 >nul 2>&1
+
 echo.
 echo   Stopping services...
 echo.
@@ -16,4 +18,4 @@ for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":3000" ^| findstr "LISTEN"')
 echo.
 echo   Done!
 echo.
-timeout /t 2 /nobreak >nul
+exit /b 0
